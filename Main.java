@@ -3,58 +3,53 @@ import java.util.Scanner;
 
 public class Main {
 
-static double A, B;
+    static double A, B;
+    static Scanner num = new Scanner(System.in);
+    static {
+        num.useLocale(Locale.US);
+    }
 
     static int Menu () {
         int ch;
-            Scanner chx = new Scanner(System.in);
-            System.out.print("\n=== Menu ===\n1-Addition (+)\n2-Subtraction (-)\n3-Multiplication (*)\n4-Division (/)\n5-Exponentiation (Power)\n6-Square Root\n7-Factorial\n0-Exit\n\nEnter your choice : ");
-            ch = chx.nextInt();
-
-            if (ch < 0 || ch > 7) {
-                System.out.println("=> Invalid choice try again.");
-            }
+        //Scanner chx = new Scanner(System.in);
+        System.out.print("\n=== Menu ===\n1-Addition (+)\n2-Subtraction (-)\n3-Multiplication (*)\n4-Division (/)\n5-Exponentiation (Power)\n6-Square Root\n7-Factorial\n0-Exit\n\nEnter your choice : ");
+        ch = num.nextInt();
         return ch;
     }
 
-    static void addition() {
-
-        Scanner num = new Scanner(System.in);
-        num.useLocale(Locale.US);
-        System.out.print("\nEnter two numbers\nA: "); //println to add new line after the text
+    static double num1(){
+        System.out.print("\nEntre two numbers\nA: "); //println to add new line after the text
         A = num.nextDouble();
-        System.out.print("B: ");
+        return A;
+    }
+
+    static double num2(){
+        System.out.print("\nB: "); //println to add new line after the text
         B = num.nextDouble();
+        return B;
+    }
+
+    static void addition() {
+        A = num1();
+        B = num2();
         System.out.println(A + " + " + B + " is : " + (A + B) + "\n");
     }
 
     static void subtraction() {
-        Scanner num = new Scanner(System.in);
-        num.useLocale(Locale.US);
-        System.out.print("\nEnter two numbers\nA: "); //println to add new line after the text
-        A = num.nextDouble();
-        System.out.print("B: ");
-        B = num.nextDouble();
+        A = num1();
+        B = num2();
         System.out.println(A + " - " + B + " is : " + (A - B));
     }
 
     static void multiplication() {
-        Scanner num = new Scanner(System.in);
-        num.useLocale(Locale.US);
-        System.out.print("\nEnter two numbers\nA: "); //println to add new line after the text
-        A = num.nextDouble();
-        System.out.print("B: ");
-        B = num.nextDouble();
+        A = num1();
+        B = num2();
         System.out.println(A + " x " + B + " is : " + (A * B));
     }
 
     static void division() {
-        Scanner num = new Scanner(System.in);
-        num.useLocale(Locale.US);
-        System.out.print("\nEnter two numbers\nA: "); //println to add new line after the text
-        A = num.nextDouble();
-        System.out.print("B: ");
-        B = num.nextDouble();
+        A = num1();
+        B = num2();
         if (B == 0) {
             System.out.println("You cant divide by 0");
         } else {
@@ -63,8 +58,6 @@ static double A, B;
     }
 
     static void power() {
-        Scanner num = new Scanner(System.in);
-        num.useLocale(Locale.US);
         System.out.print("\nEnter a number\nA: "); //println to add new line after the text
         A = num.nextDouble();
         System.out.print("\nenter the power: ");
@@ -73,8 +66,6 @@ static double A, B;
     }
 
     static void square_Root() {
-        Scanner num = new Scanner(System.in);
-        num.useLocale(Locale.US);
         System.out.print("\nEnter a number\nA: ");//println to add new line after the text
         A = num.nextDouble();
         System.out.println("Square Root of " + A + " is : " + Math.sqrt(A));
@@ -83,8 +74,6 @@ static double A, B;
     static void factorial() {
         int i;
 
-        Scanner num = new Scanner(System.in);
-        num.useLocale(Locale.US);
         System.out.print("\nEnter a number\nA: ");//println to add new line after the text
         A = num.nextDouble();
 
@@ -129,6 +118,8 @@ static double A, B;
                 case 0:
                     System.out.println("Exiting program...");
                     break;
+                default:
+                    System.out.println("=> Invalid choice try again.");
             }
         } while (ch!=0);
     }
