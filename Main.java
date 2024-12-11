@@ -5,6 +5,18 @@ public class Main {
 
 static double A, B;
 
+    static int Menu () {
+        int ch;
+            Scanner chx = new Scanner(System.in);
+            System.out.print("\n=== Menu ===\n1-Addition (+)\n2-Subtraction (-)\n3-Multiplication (*)\n4-Division (/)\n5-Exponentiation (Power)\n6-Square Root\n7-Factorial\n0-Exit\n\nEnter your choice : ");
+            ch = chx.nextInt();
+
+            if (ch < 0 || ch > 7) {
+                System.out.println("=> Invalid choice try again.");
+            }
+        return ch;
+    }
+
     static void addition() {
 
         Scanner num = new Scanner(System.in);
@@ -43,7 +55,7 @@ static double A, B;
         A = num.nextDouble();
         System.out.print("B: ");
         B = num.nextDouble();
-        if (A == 0 || B == 0) {
+        if (B == 0) {
             System.out.println("You cant divide by 0");
         } else {
             System.out.println(A + " / " + B + " is : " + (A / B));
@@ -90,19 +102,8 @@ static double A, B;
 
     public static void main(String[] args) {
         int ch;
-
-
         do {
-
-            Scanner chx = new Scanner(System.in);
-            System.out.print("\n=== Menu ===\n1-Addition (+)\n2-Subtraction (-)\n3-Multiplication (*)\n4-Division (/)\n5-Exponentiation (Power)\n6-Square Root\n7-Factorial\n0-Exit\n\nEnter your choice : ");
-            ch = chx.nextInt();
-
-            if (ch < 0 || ch > 7) {
-                System.out.println("=> Invalid choice try again.");
-                continue;
-            }
-
+            ch = Menu();
             switch (ch) {
                 case 1:
                     addition();
