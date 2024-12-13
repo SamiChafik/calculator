@@ -14,7 +14,7 @@ public class Main {
     static void Menu() {
         while (true) {
             try {
-                System.out.print("\n=== Menu ===\n1-Addition (+)\n2-Subtraction (-)\n3-Multiplication (*)\n4-Division (/)\n5-Exponentiation (Power)\n6-Square Root\n7-Factorial\n0-Exit\n\nEnter your choice : ");
+                System.out.print("\n=== Menu ===\n1-Addition [+]\n2-Subtraction [-]\n3-Multiplication [×]\n4-Division [÷]\n5-Exponentiation [^]\n6-Square Root [√]\n7-Factorial [!] \n0-Exit\nEnter your choice : ");
                 ch = num.nextInt();
                 if (ch >= 0 && ch <= 7) {
                     break;
