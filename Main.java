@@ -36,7 +36,7 @@ public class Main {
                 B = num.nextDouble();
                 break;
             } catch (InputMismatchException e) {
-                System.err.println(e.getMessage());
+                System.err.println("=> Invalid input. Please enter a number.");
                 num.next();
             }
         }
