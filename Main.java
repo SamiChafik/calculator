@@ -1,85 +1,116 @@
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
 
     static double A, B;
+    static int ch;
     static Scanner num = new Scanner(System.in);
     static {
         num.useLocale(Locale.US);
     }
 
-    static int Menu () {
-        int ch;
-        //Scanner chx = new Scanner(System.in);
-        System.out.print("\n=== Menu ===\n1-Addition (+)\n2-Subtraction (-)\n3-Multiplication (*)\n4-Division (/)\n5-Exponentiation (Power)\n6-Square Root\n7-Factorial\n0-Exit\n\nEnter your choice : ");
-        ch = num.nextInt();
-        return ch;
+    static void Menu() {
+        while (true) {
+            try {
+                System.out.print("\n=== Menu ===\n1-Addition (+)\n2-Subtraction (-)\n3-Multiplication (*)\n4-Division (/)\n5-Exponentiation (Power)\n6-Square Root\n7-Factorial\n0-Exit\n\nEnter your choice : ");
+                ch = num.nextInt();
+                if (ch >= 0 && ch <= 7) {
+                    break;
+                }
+                System.out.println("=> Invalid choice. Please select a valid option (0-7).");
+            } catch (InputMismatchException e) {
+                System.err.println("=> Invalid input. Please enter a choice.");
+                num.next();
+            }
+        }
     }
 
-    static double num1(){
-        System.out.print("\nEntre two numbers\nA: "); //println to add new line after the text
-        A = num.nextDouble();
-        return A;
-    }
-
-    static double num2(){
-        System.out.print("\nB: "); //println to add new line after the text
-        B = num.nextDouble();
-        return B;
+    static void numInput(){
+        while (true) {
+            try {
+                System.out.print("\nEntre two numbers\nA: "); //println to add new line after the text
+                A = num.nextDouble();
+                System.out.print("B: "); //println to add new line after the text
+                B = num.nextDouble();
+                break;
+            } catch (InputMismatchException e) {
+                System.err.println(e.getMessage());
+                num.next();
+            }
+        }
     }
 
     static void addition() {
-        A = num1();
-        B = num2();
-        System.out.println(A + " + " + B + " is : " + (A + B) + "\n");
+        numInput();
+        System.out.println("\n" + A + " + " + B + " is : " + (A + B) + "\n");
     }
 
     static void subtraction() {
-        A = num1();
-        B = num2();
-        System.out.println(A + " - " + B + " is : " + (A - B));
+        numInput();
+        System.out.println("\n" + A + " - " + B + " is : " + (A - B));
     }
 
     static void multiplication() {
-        A = num1();
-        B = num2();
-        System.out.println(A + " x " + B + " is : " + (A * B));
+        numInput();
+        System.out.println("\n" + A + " x " + B + " is : " + (A * B));
     }
 
     static void division() {
-        A = num1();
-        B = num2();
+        numInput();
         if (B == 0) {
             System.out.println("You cant divide by 0");
         } else {
-            System.out.println(A + " / " + B + " is : " + (A / B));
+            System.out.println("\n" + A + " / " + B + " is : " + (A / B));
         }
     }
 
     static void power() {
-        System.out.print("\nEnter a number\nA: "); //println to add new line after the text
-        A = num.nextDouble();
-        System.out.print("\nenter the power: ");
-        B = num.nextDouble();
-        System.out.println(A + " power " + B + " is : " + Math.pow(A, B));
+        while (true) {
+            try {
+                System.out.print("\nEnter a number\nA: "); //println to add new line after the text
+                A = num.nextDouble();
+                System.out.print("Enter the power: ");
+                B = num.nextDouble();
+                break;
+            } catch (Exception e) {
+                System.out.println("=> Invalid input. Please enter a number.");
+                num.next();
+            }
+        }
+        System.out.println("\n" + A + " power " + B + " is : " + Math.pow(A, B));
     }
 
     static void square_Root() {
-        System.out.print("\nEnter a number\nA: ");//println to add new line after the text
-        A = num.nextDouble();
+        while (true) {
+            try {
+                System.out.print("\nEnter a number\nA: ");//println to add new line after the text
+                A = num.nextDouble();
+                break;
+            } catch (Exception e) {
+                System.out.println("=> Invalid input. Please enter a number.");
+                num.next();
+            }
+        }
         System.out.println("Square Root of " + A + " is : " + Math.sqrt(A));
     }
 
     static void factorial() {
         int i;
-
-        System.out.print("\nEnter a number\nA: ");//println to add new line after the text
-        A = num.nextDouble();
+        while (true) {
+            try {
+                System.out.print("\nEnter a number\nA: ");//println to add new line after the text
+                A = num.nextDouble();
+                break;
+            } catch (Exception e) {
+                System.out.println("=> Invalid input. Please enter a number.");
+                num.next();
+            }
+        }
 
         if (A < 0) {
             System.out.println("Factorial of a negative number is not defined.");
-            return;
         } else {
             long factorial = 1;
             for (i = 1; i <= A; i++) {
@@ -90,9 +121,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int ch;
         do {
-            ch = Menu();
+            Menu();
             switch (ch) {
                 case 1:
                     addition();
@@ -118,8 +148,6 @@ public class Main {
                 case 0:
                     System.out.println("Exiting program...");
                     break;
-                default:
-                    System.out.println("=> Invalid choice try again.");
             }
         } while (ch!=0);
     }
